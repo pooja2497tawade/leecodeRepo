@@ -1,0 +1,63 @@
+class Solution {
+    public List<String> restoreIpAddresses(String s) {
+        
+        List<String> list = new ArrayList<String>();
+       // List<String> list1 = new ArrayList<String>();
+        res(s,0,0,"",list);
+
+        return list;
+    }
+    public void res(String s,int i,int digitCount,String ans,List<String> list)
+    {
+        // List<String> l = new ArrayList<String>();
+        //System.out.println(s.length());
+        //System.out.println(i+"-"+digitCount+"-"+ans);
+        if(s.length()== i || digitCount == 4)
+        {
+            if(s.length()==i && digitCount==4)
+            {
+                list.add(ans);
+                System.out.println(ans);
+            }
+            return;
+        }
+        if(i+1!=s.length())
+        {
+             res(s,i+1,digitCount+1,ans+s.charAt(i)+".",list);
+        }
+       
+
+        if(s.length() > i+2 && isValid(s.substring(i,i+2)))
+        {
+                res(s,i+2,digitCount+1,ans+s.substring(i,i+2)+".",list);
+                
+        }
+        if(s.length() > i+3 && isValid(s.substring(i,i+3)))
+        {
+             res(s,i+3,digitCount+1,ans+s.substring(i,i+3)+".",list);
+        }
+        if(isValid(s.substring(i)))
+        {
+            
+            res(s,s.length(),digitCount+1,ans+s.substring(i),list);
+        }
+        
+    }
+    public static boolean isValid(String s)
+    {
+        if(s.length()==1)
+        {
+            return true;
+        }
+        if(s.length()>3)
+        {
+            return false;
+        }
+        if(s.charAt(0)=='0')
+        {
+            return false;
+        }
+        int val=Integer.parseInt(s);
+        return val<=255;
+    }
+}
