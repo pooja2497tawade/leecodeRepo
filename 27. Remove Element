@@ -1,0 +1,31 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+
+
+    //     HashSet<Integer> hs = new HashSet<Integer>();
+    //     int count=0;
+    //    for(int i=0;i<nums.length;i++)
+    //    {
+    //         if(!hs.contains(val))
+    //         {
+    //             hs.add(nums[i]); 
+    //         }
+    //         if(hs.contains(nums[i]).equals(val))
+    //         {
+    //                  hs.remove(nums[i]);
+    //                  count++;
+    //         }
+
+    //    }
+    //    return count;
+
+    int count = 0, e = nums.length;
+        for(int i = 0; i < e; i++) {
+            if(nums[i] != val) {
+                nums[count++] = nums[i];
+            }
+        }
+    return count;
+        
+    }
+}
